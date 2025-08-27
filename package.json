@@ -1,0 +1,13 @@
+{
+  "name": "chip-verifier",
+  "version": "1.0.0",
+  "description": "Gestor de chips para verificación de servicios",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "pg": "^8.11.5"
+  }
+}
