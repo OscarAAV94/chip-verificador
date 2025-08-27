@@ -6,13 +6,14 @@
   <title>Gestor de Chips</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
   <header class="p-4 bg-white shadow">
     <h1 class="text-2xl font-bold">Gestor de Chips para Verificación</h1>
     <p class="text-sm text-slate-500">Registra compañías, servicios y controla el uso de cada número</p>
   </header>
 
-  <main class="max-w-5xl mx-auto p-4 grid gap-6">
+  <main class="flex-1 max-w-3xl mx-auto p-4 grid gap-6">
     <!-- Panel rápido: agregar compañías/servicios -->
     <section class="grid md:grid-cols-2 gap-4">
       <div class="bg-white p-4 rounded-2xl shadow">
@@ -37,16 +38,16 @@
     <!-- Buscar/registrar número -->
     <section class="bg-white p-4 rounded-2xl shadow">
       <h2 class="font-semibold mb-3">Buscar o registrar número</h2>
-      <div class="flex flex-col md:flex-row gap-2">
-        <input id="numberInput" class="border rounded px-3 py-2 w-full" placeholder="Ej: +59170000000" />
+      <div class="flex flex-col sm:flex-row gap-2">
+        <input id="numberInput" class="border rounded px-3 py-2 flex-1" placeholder="Ej: +59170000000" />
         <button id="btnSearch" class="px-4 py-2 rounded-xl bg-blue-600 text-white">Buscar</button>
       </div>
 
       <!-- Si no existe -->
       <div id="newNumberPanel" class="hidden mt-4 border-t pt-4">
         <h3 class="font-medium mb-2">Número nuevo: selecciona la compañía</h3>
-        <div class="flex gap-2">
-          <select id="companySelect" class="border rounded px-3 py-2"></select>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <select id="companySelect" class="border rounded px-3 py-2 flex-1"></select>
           <button id="btnCreateNumber" class="px-4 py-2 rounded-xl bg-emerald-600 text-white">Registrar número</button>
         </div>
       </div>
@@ -54,7 +55,7 @@
 
     <!-- Detalle del número -->
     <section id="numberDetail" class="bg-white p-4 rounded-2xl shadow hidden">
-      <div class="flex items-start justify-between gap-4">
+      <div class="flex flex-col sm:flex-row items-start justify-between gap-4">
         <div>
           <h2 class="font-semibold text-lg">
             Número: <span id="d_number" class="font-mono"></span>
@@ -63,7 +64,7 @@
             Compañía: <span id="d_company"></span> • Creado: <span id="d_created"></span>
           </p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 mt-2 sm:mt-0">
           <label class="text-sm">Bloqueado</label>
           <input id="toggleBlocked" type="checkbox" class="h-5 w-5" />
         </div>
