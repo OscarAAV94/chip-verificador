@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestor de Chips</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <header class="p-4 bg-white shadow">
+    <h1 class="text-2xl font-bold">Gestor de Chips para Verificación</h1>
+    <p class="text-sm text-slate-500">Registra compañías, servicios y controla el uso de cada número</p>
+  </header>
+
+  <main class="max-w-5xl mx-auto p-4 grid gap-6">
+    <!-- Panel rápido: agregar compañías/servicios -->
+    <section class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded-2xl shadow">
+        <h2 class="font-semibold mb-2">Agregar compañía</h2>
+        <div class="flex gap-2">
+          <input id="companyName" class="border rounded px-3 py-2 w-full" placeholder="Ej: Entel" />
+          <button id="btnAddCompany" class="px-4 py-2 rounded-xl bg-slate-900 text-white">Agregar</button>
+        </div>
+        <p class="text-xs text-slate-500 mt-2">Compañías registradas: <span id="companyCount">0</span></p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow">
+        <h2 class="font-semibold mb-2">Agregar servicio</h2>
+        <div class="flex gap-2">
+          <input id="serviceName" class="border rounded px-3 py-2 w-full" placeholder="Ej: WhatsApp" />
+          <button id="btnAddService" class="px-4 py-2 rounded-xl bg-slate-900 text-white">Agregar</button>
+        </div>
+        <p class="text-xs text-slate-500 mt-2">Servicios registrados: <span id="serviceCount">0</span></p>
+      </div>
+    </section>
+
+    <!-- Buscar/registrar número -->
+    <section class="bg-white p-4 rounded-2xl shadow">
+      <h2 class="font-semibold mb-3">Buscar o registrar número</h2>
+      <div class="flex flex-col md:flex-row gap-2">
+        <input id="numberInput" class="border rounded px-3 py-2 w-full" placeholder="Ej: +59170000000" />
+        <button id="btnSearch" class="px-4 py-2 rounded-xl bg-blue-600 text-white">Buscar</button>
+      </div>
+
+      <!-- Si no existe -->
+      <div id="newNumberPanel" class="hidden mt-4 border-t pt-4">
+        <h3 class="font-medium mb-2">Número nuevo: selecciona la compañía</h3>
+        <div class="flex gap-2">
+          <select id="companySelect" class="border rounded px-3 py-2"></select>
+          <button id="btnCreateNumber" class="px-4 py-2 rounded-xl bg-emerald-600 text-white">Registrar número</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detalle del número -->
+    <section id="numberDetail" class="bg-white p-4 rounded-2xl shadow hidden">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 class="font-semibold text-lg">
+            Número: <span id="d_number" class="font-mono"></span>
+          </h2>
+          <p class="text-sm text-slate-500">
+            Compañía: <span id="d_company"></span> • Creado: <span id="d_created"></span>
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-sm">Bloqueado</label>
+          <input id="toggleBlocked" type="checkbox" class="h-5 w-5" />
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h3 class="font-medium mb-2">Servicios</h3>
+        <div id="servicesList" class="grid md:grid-cols-2 gap-2"></div>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="font-medium mb-2">Historial de usos</h3>
+        <div class="flex gap-2 items-center mb-2">
+          <button id="btnLoadUsage" class="px-3 py-2 rounded bg-slate-100">Actualizar historial</button>
+          <span class="text-xs text-slate-500">Muestra hasta 200 usos más recientes</span>
+        </div>
+        <div id="usageList" class="text-sm text-slate-700 space-y-1"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-xs text-slate-400 my-8">
+    Úsalo solo para fines legales y cumpliendo Términos de cada servicio.
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
